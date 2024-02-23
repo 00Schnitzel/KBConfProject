@@ -3,7 +3,7 @@ Project By: Max Vogel
 
 
 ## Location of OOASP-Encoding:
-ASP/OOASP_Program
+./OOASP_Program
 
 
 ## Test-Case Executions:
