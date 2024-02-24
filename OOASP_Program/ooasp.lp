@@ -66,14 +66,18 @@ numAssoc(I,A,O2,C) :- C = #count{ O1 : ooasp_associated(I,A,O1,O2)}, ooasp_assoc
 
 
 %Check that Atttirbute values are correct
+%Check integer attributes	
 	%Check for Classes
-:- ooasp_instantiation(M,I), ooasp_attribute_enum(M,C,AT,VAL1), ooasp_isa(I,C,O), ooasp_attribute_value(I,AT,O,VAL2),  not VAL1=VAL2.
 :- ooasp_attribute_value(I,AT,O,VAL), ooasp_isa(I,C,O), ooasp_attribute_minInclusive(I,C,AT,MIN), ooasp_attribute_maxInclusive(I,C,AT,MAX), VAL<MIN.
 :- ooasp_attribute_value(I,AT,O,VAL), ooasp_isa(I,C,O), ooasp_attribute_minInclusive(I,C,AT,MIN), ooasp_attribute_maxInclusive(I,C,AT,MAX), VAL>MAX.
 	%Check for subclasses
-:- ooasp_instantiation(M,I), ooasp_attribute_enum(M,C,AT,VAL1), ooasp_subclass(M,SC,C), ooasp_isa(I,SC,O), ooasp_attribute_value(I,AT,O,VAL2),  not VAL1=VAL2.
 :- ooasp_attribute_value(I,AT,O,VAL), ooasp_subclass(M,SC,C), ooasp_isa(I,SC,O), ooasp_attribute_minInclusive(M,C,AT,MIN), ooasp_attribute_maxInclusive(M,C,AT,MAX), VAL<MIN.
 :- ooasp_attribute_value(I,AT,O,VAL), ooasp_subclass(M,SC,C), ooasp_isa(I,SC,O), ooasp_attribute_minInclusive(M,C,AT,MIN), ooasp_attribute_maxInclusive(M,C,AT,MAX), VAL>MAX.
+
+%Check string attributes
+permittedValue(AT,O,VAL) :- ooasp_instantiation(M,I), ooasp_attribute_enum(M,C,AT,VAL), ooasp_isa(I,C,O), ooasp_attribute_value(I,AT,O,VAL).
+permittedValue(AT,O,VAL) :- ooasp_instantiation(M,I), ooasp_attribute_enum(M,C,AT,VAL), ooasp_subclass(M,SC,C), ooasp_isa(I,SC,O), ooasp_attribute_value(I,AT,O,VAL).
+:-  ooasp_attribute_enum(M,C,AT,_), ooasp_attribute_value(I,AT,O,VAL), not permittedValue(AT,O,VAL).
 
 
 
@@ -81,6 +85,7 @@ numAssoc(I,A,O2,C) :- C = #count{ O1 : ooasp_associated(I,A,O1,O2)}, ooasp_assoc
 
 %Minimize number of components used
 #minimize {1, O : ooasp_isa(I,C,O)}.
+
 
 
 %Show Statements

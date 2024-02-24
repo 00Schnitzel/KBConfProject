@@ -41,7 +41,10 @@ ooasp_attribute_maxInclusive("3","Staff","StaffPower",10).
 %Robe Color
 ooasp_attribute("3","Robe","RobeColor","string").
 ooasp_attribute_enum("3","Robe","RobeColor","Black").
+ooasp_attribute_enum("3","Robe","RobeColor","Red").
+ooasp_attribute_enum("3","Robe","RobeColor","Blue").
+ooasp_attribute_enum("3","Robe","RobeColor","Green").
+ooasp_attribute_enum("3","Robe","RobeColor","Purple").
 
 %Wearing Shoes
-ooasp_attribute("3","Shoes","WearingShoes","string").
-ooasp_attribute_enum("3","Shoes","WearingShoes","True").
+ooasp_attribute("3","Shoes","WearingShoes","boolean").

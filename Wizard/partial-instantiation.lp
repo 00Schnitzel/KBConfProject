@@ -9,4 +9,4 @@ ooasp_isa("A","Shoes",4).
 
 ooasp_attribute_value("A","StaffPower",2,10).
 ooasp_attribute_value("A","RobeColor",3,"Black").
-ooasp_attribute_value("A","WearingShoes",4,"True").
+ooasp_attribute_value("A","WearingShoes",4,true).
